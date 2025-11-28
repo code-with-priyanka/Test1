@@ -1,0 +1,77 @@
+🔄 Project Flow (Step-by-Step)
+1. Frontend (React + HTML/CSS)
+Login/Signup Page → Collects user credentials
+
+Dashboard/Home → Displays featured songs, playlists, recommendations
+
+Search Bar → Allows users to search songs/artists/albums
+
+Music Player Component → Play, pause, skip, volume control
+
+Playlist Management → Create, edit, delete playlists
+
+Profile Page → User info, listening history, liked songs
+
+👉 React handles state management (Redux/Context API) and communicates with backend APIs.
+
+2. Backend (.NET Core Web API)
+Authentication Service
+
+User registration & login
+
+JWT token-based authentication
+
+Music Catalog Service
+
+Fetch song metadata (title, artist, album, duration)
+
+Search functionality
+
+Streaming Service
+
+Handles audio file requests
+
+Streams chunks of audio (HLS/DASH protocols)
+
+Playlist Service
+
+CRUD operations for playlists
+
+Recommendation Engine
+
+Suggests songs based on user history
+
+3. Database (MySQL)
+Tables:
+
+Users → User info, credentials (hashed passwords)
+
+Songs → Song metadata (title, artist, album, genre, file path)
+
+Playlists → Playlist details linked to users
+
+PlaylistSongs → Mapping between playlists and songs
+
+UserActivity → Listening history, likes, shares
+
+👉 MySQL ensures relational integrity and fast queries. Use indexes for search optimization.
+
+4. Storage & Streaming
+Audio files stored in local server or cloud (AWS S3, Azure Blob)
+
+CDN integration for faster delivery
+
+Streaming handled via chunked audio delivery (progressive download or adaptive bitrate)
+
+5. Flow of User Journey
+User opens app → React frontend loads
+
+Login request → Sent to .NET API → Validates against MySQL
+
+User searches song → Query hits Songs table → Results returned
+
+User clicks play → React player requests audio chunks from backend → Backend streams file from storage
+
+User adds song to playlist → API updates PlaylistSongs table
+
+Recommendation engine queries UserActivity → Suggests new songs
